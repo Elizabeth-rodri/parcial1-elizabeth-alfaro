@@ -1,0 +1,42 @@
+{
+  "info": {
+    "_postman_id": "9a597e2a-d18c-4a3c-97f2-dd69d3a94c04",
+    "name": "New Collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "New Request",
+      "id": "70a4f680-8398-4a9f-aecb-1c0e164794eb",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n \"nombre\":\"Maria\",\r\n \"apellido\":\"Lopez\",\r\n \"estado\":1,\r\n \"fecha_nacimiento\":\"2000-05-10\",\r\n \"id_genero\":1,\r\n \"email\":\"maria@email.com\",\r\n \"direccion\":\"direccion completa\",\r\n \"id_distrito\":1,\r\n \"id_tipo_direccion\":1,\r\n \"contactos\":[\r\n   {\r\n     \"nombre\":\"789564545\",\r\n     \"id_tipo_contacto\":1\r\n   }\r\n ]\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/persona",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "persona"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

@@ -4,4 +4,4 @@ function App() {
   return <Dashboard />;
 }
 
-export default App;v
+export default App;

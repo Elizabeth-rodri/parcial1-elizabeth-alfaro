@@ -1,53 +1,53 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\catalogos;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Proveedor;
 
-
-class ProveedorController extends Controller
+class ProveedoresController extends Controller
 {
+    // Listar proveedores
     public function index()
     {
-        return Proveedor::all();
+        $proveedores = Proveedor::all();
+        return response()->json(['data' => $proveedores]);
     }
 
+    // Crear proveedor
     public function store(Request $request)
     {
         $request->validate([
-            'nombre' => 'required|string|max:255',
-            'telefono' => 'nullable|string|max:20',
-            'correo' => 'nullable|email'
+            'nombre' => 'required|string|max:255'
         ]);
 
-        $proveedor = Proveedor::create($request->all());
+        $proveedor = Proveedor::create([
+            'nombre' => $request->nombre
+        ]);
 
-        return response()->json($proveedor, 201);
+        return response()->json(['data' => $proveedor], 201);
     }
 
-    public function show(Proveedor $proveedor)
-    {
-        return $proveedor;
-    }
-
-    public function update(Request $request, Proveedor $proveedor)
+    // Actualizar proveedor
+    public function updateProveedor(Request $request, $idproveedor)
     {
         $request->validate([
-            'nombre' => 'required|string|max:255',
-            'telefono' => 'nullable|string|max:20',
-            'correo' => 'nullable|email'
+            'nombre' => 'required|string|max:255'
         ]);
 
-        $proveedor->update($request->all());
+        $proveedor = Proveedor::findOrFail($idproveedor);
+        $proveedor->nombre = $request->nombre;
+        $proveedor->save();
 
-        return response()->json($proveedor, 200);
+        return response()->json(['data' => $proveedor]);
     }
 
-    public function destroy(Proveedor $proveedor)
+    // Eliminar proveedor
+    public function eliminarProveedor($idproveedor)
     {
+        $proveedor = Proveedor::findOrFail($idproveedor);
         $proveedor->delete();
-
-        return response()->json(['message' => 'Proveedor eliminado'], 200);
+        return response()->json(['message' => 'Proveedor eliminado correctamente']);
     }
 }

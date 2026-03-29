@@ -2,14 +2,18 @@
   "$schema": "https://json.schemastore.org/package.json",
   "private": true,
   "type": "module",
+
+
+
   "scripts": {
     "build": "vite build",
     "dev": "vite",
     "prepare": "husky"
+    
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.0.0",
-    "axios": "^1.8.2",
+    "axios": "^1.14.0",
     "commitizen": "^4.3.1",
     "concurrently": "^9.0.1",
     "cz-conventional-changelog": "^3.3.0",
@@ -22,5 +26,10 @@
     "commitizen": {
       "path": "cz-conventional-changelog"
     }
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.8",
+    "react-router-dom": "^7.13.2"
   }
 }

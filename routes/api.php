@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\catalogos\MarcasController;
 use App\Http\Controllers\Api\catalogos\ProveedoresController;
-use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\ProductoController; 
 
 Route::get('/productos', [ProductoController::class, 'apiProductos']);
 
@@ -56,26 +56,34 @@ Route::prefix('catalogos')->group(function () {
 
     // ================= CATEGORIAS =================
     Route::prefix('categorias')->group(function(){
-        Route::get('/', [CategoriasController::class,'index'])->middleware('rolePermission:Super Admin,Admin');
-        Route::post('/', [CategoriasController::class,'store'])->middleware('rolePermission:Super Admin');
-        Route::put('/{idCategoria}', [CategoriasController::class,'updateCategoria'])->middleware('rolePermission:Super Admin');
-        Route::delete('/{idCategoria}', [CategoriasController::class,'eliminarCategoria'])->middleware('rolePermission:Super Admin');
+        Route::get('/', [CategoriasController::class,'index']);
+        Route::post('/', [CategoriasController::class,'store']);
+        Route::put('/{idCategoria}', [CategoriasController::class,'updateCategoria']);
+        Route::delete('/{idCategoria}', [CategoriasController::class,'eliminarCategoria']);
     });
 
     // ================= MARCAS =================
     Route::prefix('marcas')->group(function(){
-        Route::get('/', [MarcasController::class,'index'])->middleware('rolePermission:Super Admin,Admin');
-        Route::post('/', [MarcasController::class,'store'])->middleware('rolePermission:Super Admin');
-        Route::put('/{idmarca}', [MarcasController::class,'updateMarca'])->middleware('rolePermission:Super Admin');
-        Route::delete('/{idmarca}', [MarcasController::class,'eliminarMarca'])->middleware('rolePermission:Super Admin');
+        Route::get('/', [MarcasController::class,'index']);
+        Route::post('/', [MarcasController::class,'store']);
+        Route::put('/{idmarca}', [MarcasController::class,'updateMarca']);
+        Route::delete('/{idmarca}', [MarcasController::class,'eliminarMarca']);
     });
 
     // ================= PROVEEDORES =================
     Route::prefix('proveedores')->group(function(){
-        Route::get('/', [ProveedoresController::class,'index'])->middleware('rolePermission:Super Admin,Admin');
-        Route::post('/', [ProveedoresController::class,'store'])->middleware('rolePermission:Super Admin');
-        Route::put('/{idproveedor}', [ProveedoresController::class,'updateProveedor'])->middleware('rolePermission:Super Admin');
-        Route::delete('/{idproveedor}', [ProveedoresController::class,'eliminarProveedor'])->middleware('rolePermission:Super Admin');
+        Route::get('/', [ProveedoresController::class,'index']);
+        Route::post('/', [ProveedoresController::class,'store']);
+        Route::put('/{idproveedor}', [ProveedoresController::class,'updateProveedor']);
+        Route::delete('/{idproveedor}', [ProveedoresController::class,'eliminarProveedor']);
+    });
+    
+    // ================= PRODUCTOS =================
+    Route::prefix('productos')->group(function(){
+        Route::get('/', [ProductoController::class, 'index']);
+        Route::post('/', [ProductoController::class, 'store']);
+        Route::put('/{id}', [ProductoController::class, 'update']);
+        Route::delete('/{id}', [ProductoController::class, 'destroy']);
     });
 
 });
